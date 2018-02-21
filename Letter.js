@@ -6,19 +6,16 @@ const Letter = function(letterChoice){
     this.letterGuessed = false;
     
     this.returnLetter = function(){
-        if(this.letterGuessed){
+        if(this.letterChoice === " "){
             //If the letter has been guessed.
-            return this.letterChoice; 
-        }
+             this.letterGuessed === true   
             //If the letter has NOT been guess, yet.
+            return " ";
+        } if(this.letterGuessed === false){
             return " _ ";
-    }
-
-    this.check = function (guess){
-        if(this.letterChoice === guess){
-            this.letterGuessed === true;
-            return true;
-        };
+        }else{
+            return this.letterChoice;
+        }
 
     };
 };
