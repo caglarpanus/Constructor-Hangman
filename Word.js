@@ -1,4 +1,4 @@
-var Letter = require("./Letter.js")
+var Letter = require("./letter.js")
 
 const Word = function (word){
     this.word = word;
@@ -33,10 +33,10 @@ const Word = function (word){
         return returnWhat;
       }
 
-      this.render = function(){
+      this.wordRender = function(){
           var display="";
           this.letters.forEach(function(ltr){
-              var currentLetter = ltr.render();
+              var currentLetter = ltr.returnLetter();
               display+=currentLetter;
           });
           return display;
