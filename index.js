@@ -70,7 +70,7 @@ startGame();
             var found = currentWord.letterCheck(letterReturned);
 
             if(found === 0){
-              console.log("Wrong!");
+              console.log("\x1b[31m%s\x1b[0m","INCORRECT!");
               guessesLeft--;
               display++;
               console.log("Guesses left: " + guessesLeft);
@@ -82,11 +82,11 @@ startGame();
 
               console.log("Letters left: " + guessedLetters);
             }else{
-              console.log("Woohoo! You guessed correctly!");
+              console.log("\x1b[32m","CORRECT!");
 
                 if(currentWord.wordCheck() === true){
                   console.log(currentWord.wordRender());
-                  console.log("Congrats! You won!");
+                  console.log("\x1b[1m","\x1b[35m","Congrats! You won!");
                 } else {
                   console.log("Guesses remianing: " + guessesLeft);
                   console.log(currentWord.wordRender());
@@ -101,7 +101,7 @@ startGame();
               console.log("The word you were guessing was: " + currentWord.word);
             }
           } else {
-              console.log("You've guessed that letter already. Try again.");
+              console.log("\x1b[35m%s\x1b[0m","You've guessed that letter already. Try again.");
               userPrompts();
           }
       })
