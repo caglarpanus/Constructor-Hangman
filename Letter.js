@@ -1,23 +1,24 @@
-const Letter = function(letterChoice){
-    //To store the underlying character for the letter
-    this.letterChoice = letterChoice;
-
-    // A letter has been guessed yet
-    this.letterGuessed = false;
-    
-    this.returnLetter = function(){
-        if(this.letterChoice === " "){
-            //If the letter has been guessed.
-             this.letterGuessed === true   
-            //If the letter has NOT been guess, yet.
-            return " ";
-        } if(this.letterGuessed === false){
-            return " _ ";
-        }else{
-            return this.letterChoice;
-        }
-
+var Letter = function (ltr) {
+    this.letter = ltr;
+    this.appear = false;
+  
+    this.letterRender = function() {
+      // if this is a blank space
+      if (this.letter === " ") {
+          //mark the space true
+          this.appear = true;
+          // and return a space to the word
+          return " ";
+        // if the letter hasn't been guessed
+      } if (this.appear === false) {
+          // return letters placeholder
+          return " _ ";
+        // if the letter has appeared (guessed)
+      } else {
+          //show the letter
+          return this.letter;
+      }
     };
-};
-
-module.exports = Letter;
+  };
+  
+  module.exports = Letter;

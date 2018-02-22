@@ -1,47 +1,47 @@
-var Letter = require("./letter.js")
+var Letter = require('./letter.js')
 
-const Word = function (word){
-    this.word = word;
-    this.letters = [];
-    this.wordFound=false;
+function Word(wrd) {
+  this.word = wrd;
+  //collection of letter objects
+  this.letters = [];
+  this.wordFound = false;
 
-    this.getLetters = function(){
-        //populating letters
-        for(var i=0; i < this.word.length; i++){
-            var newLetter = new Letter(this.word[i]);
-            this.letters.push(newLetter)
-        }
-    };
-
-    this.wordCheck = function () {
-        if (this.letters.every(function (ltr) {
-            return ltr.appear === true;
-        })) {
-            this.wordFound = true;
-            return true;
-        }
+  this.getLetters = function () {
+      //populate the collection above with new Letter objects
+      for (var i = 0; i < this.word.length; i++) {
+          var newLetter = new Letter(this.word[i]);
+          this.letters.push(newLetter);
       }
+  }
 
-      this.letterCheck = function(guessedLtr){
-        var returnWhat = 0;
-        this.letters.forEach(function(ltr){
-            if(ltr.letter===guessedLtr){
-                ltr.appear =true;
-                returnWhat++; 
-            }
-        });
-        return returnWhat;
+  this.wordCheck = function () {
+    if (this.letters.every(function (lttr) {
+        return lttr.appear === true;
+    })) {
+        this.wordFound = true;
+        return true;
+    }
+  }
+
+  this.letterCheck = function (guessedLetter) {
+    var returnWhat = 0
+    this.letters.forEach(function(lttr) {
+      if(lttr.letter === guessedLetter){
+        lttr.appear = true;
+        returnWhat++;
       }
+    })
+    return returnWhat;
+  }
 
-      this.wordRender = function(){
-          var display="";
-          this.letters.forEach(function(ltr){
-              var currentLetter = ltr.returnLetter();
-              display+=currentLetter;
-          });
-          return display;
-      }
+  this.wordRender = function() {
+    var display = '';
+    this.letters.forEach(function(lttr){
+      var currentLetter = lttr.letterRender();
+      display+= currentLetter;
+    })
+    return display;
+  }
+}
 
-};
-
-module.exports = Word;
+module.exports = Word
